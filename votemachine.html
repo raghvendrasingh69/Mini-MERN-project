@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vote Machine</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🗳️ Vote Machine</h1>
+
+  <h2>Candidate A: <span id="aVotes">0</span></h2>
+  <h2>Candidate B: <span id="bVotes">0</span></h2>
+  <h2>Candidate C: <span id="cVotes">0</span></h2>
+
+  <button onclick="voteA()">Vote A</button>
+  <button onclick="voteB()">Vote B</button>
+  <button onclick="voteC()">Vote C</button>
+
+  <br><br>
+  <button onclick="showResult()">Show Result</button>
+
+  <h2 id="result"></h2>
+
+  <script>
+    let a = 0, b = 0, c = 0;
+
+    function voteA() {
+      a++;
+      document.getElementById("aVotes").innerText = a;
+    }
+
+    function voteB() {
+      b++;
+      document.getElementById("bVotes").innerText = b;
+    }
+
+    function voteC() {
+      c++;
+      document.getElementById("cVotes").innerText = c;
+    }
+
+    function showResult() {
+      if (a > b && a > c) {
+        result.innerText = "🏆 Candidate A Wins!";
+      } else if (b > a && b > c) {
+        result.innerText = "🏆 Candidate B Wins!";
+      } else if (c > a && c > b) {
+        result.innerText = "🏆 Candidate C Wins!";
+      } else {
+        result.innerText = "🤝 It's a Tie!";
+      }
+    }
+  </script>
+
+</body>
+</html>

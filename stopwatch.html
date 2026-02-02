@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Stopwatch</title>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #display {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        div {
+            border: 2px solid black;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: lightcoral;
+
+        }
+    </style>
+    <h1>Stopwatch</h1>
+    <div>
+        <h1 id="display">00:00</h1>
+
+        <button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="reset()">Reset</button>
+    </div>
+    <script>
+        let time = 0;        // total time in seconds
+        let timer = null;   // stores interval reference
+
+        function start() {
+            // prevent multiple intervals
+            if (timer !== null) return;
+
+            timer = setInterval(() => {
+                time++;
+
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+
+                document.getElementById("display").innerText =
+                    `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+            }, 1000);
+        }
+
+        function stop() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function reset() {
+            stop();
+            time = 0;
+            document.getElementById("display").innerText = "00:00";
+        }
+    </script>
+
+</body>
+
+</html>

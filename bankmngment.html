@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bank Management System</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 40px;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏦 Bank Management System</h1>
+
+  <h2 id="name">No Account Created</h2>
+  <h3>Balance: ₹<span id="balance">0</span></h3>
+
+  <input type="text" id="username" placeholder="Enter Name">
+  <br>
+  <button onclick="createAccount()">Create Account</button>
+
+  <hr>
+
+  <input type="number" id="amount" placeholder="Enter Amount">
+  <br>
+  <button onclick="deposit()">Deposit</button>
+  <button onclick="withdraw()">Withdraw</button>
+
+  <h3 id="message"></h3>
+
+  <script>
+    let accountName = "";
+    let balance = 0;
+
+    function createAccount() {
+      const nameInput = document.getElementById("username").value;
+
+      if (nameInput === "") {
+        showMessage("Please enter a name ❌");
+        return;
+      }
+
+      accountName = nameInput;
+      balance = 0;
+
+      document.getElementById("name").innerText = "Account Holder: " + accountName;
+      updateBalance();
+      showMessage("Account created successfully ✅");
+    }
+
+    function deposit() {
+      const amount = Number(document.getElementById("amount").value);
+
+      if (!isValid(amount)) return;
+
+      balance += amount;
+      updateBalance();
+      showMessage("Amount deposited ✅");
+    }
+
+    function withdraw() {
+      const amount = Number(document.getElementById("amount").value);
+
+      if (!isValid(amount)) return;
+
+      if (amount > balance) {
+        showMessage("Insufficient balance ❌");
+        return;
+      }
+
+      balance -= amount;
+      updateBalance();
+      showMessage("Amount withdrawn ✅");
+    }
+
+    function updateBalance() {
+      document.getElementById("balance").innerText = balance;
+    }
+
+    function isValid(amount) {
+      if (accountName === "") {
+        showMessage("Create account first ❌");
+        return false;
+      }
+      if (amount <= 0) {
+        showMessage("Enter valid amount ❌");
+        return false;
+      }
+      return true;
+    }
+
+    function showMessage(msg) {
+      document.getElementById("message").innerText = msg;
+    }
+  </script>
+
+</body>
+</html>

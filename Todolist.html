@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+</head>
+
+<body>
+
+    <h1>Task List</h1>
+
+    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <input type="date" id="taskDate">
+        <input type="text" id="taskName" placeholder="Enter task name">
+        <input type="text" id="taskDesc" placeholder="Enter task priority">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+
+    <!-- Task list -->
+    <ul id="taskList"></ul>
+
+</body>
+
+<script>
+    const taskDate = document.getElementById("taskDate");
+    const taskName = document.getElementById("taskName");
+    const taskDesc = document.getElementById("taskDesc");
+    const taskList = document.getElementById("taskList");
+
+    function addTask() {
+        const date = taskDate.value;
+        const name = taskName.value;
+        const desc = taskDesc.value;
+
+        // ✅ Validation
+        if (!date || !name || !desc) {
+            alert("Please fill in all fields");
+            return;
+        }
+
+        // ✅ Create list item
+        const li = document.createElement("li");
+
+        li.textContent = `${date} | ${name} | ${desc}`;
+
+        // ✅ Add to list
+        taskList.appendChild(li);
+
+        // ✅ Clear inputs
+        taskDate.value = "";
+        taskName.value = "";
+        taskDesc.value = "";
+    }
+</script>
+
+</html>

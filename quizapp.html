@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Quiz App</h1>
+
+    <form id="quizform">
+
+        <!-- Question 1 -->
+        <div class="card">
+            <p>1. What is the capital of India?</p>
+            <label><input type="radio" name="q1" value="Delhi"> Delhi</label><br>
+            <label><input type="radio" name="q1" value="Mumbai"> Mumbai</label><br>
+            <label><input type="radio" name="q1" value="Chennai"> Chennai</label>
+        </div>
+
+        <br>
+
+        <!-- Question 2 -->
+        <div class="card">
+            <p>2. Which language is used for web development?</p>
+            <label><input type="radio" name="q2" value="Python"> Python</label><br>
+            <label><input type="radio" name="q2" value="JavaScript"> JavaScript</label><br>
+            <label><input type="radio" name="q2" value="C++"> C++</label>
+        </div>
+
+        <br>
+
+        <!-- Question 3 -->
+        <div class="card">
+            <p>3. Which HTML tag is used to create a hyperlink?</p>
+            <label><input type="radio" name="q3" value="a"> &lt;a&gt;</label><br>
+            <label><input type="radio" name="q3" value="link"> &lt;link&gt;</label><br>
+            <label><input type="radio" name="q3" value="href"> href</label>
+        </div>
+
+        <br>
+
+        <!-- Question 4 -->
+        <div class="card">
+            <p>4. Which CSS property is used to change text color?</p>
+            <label><input type="radio" name="q4" value="background-color"> background-color</label><br>
+            <label><input type="radio" name="q4" value="color"> color</label><br>
+            <label><input type="radio" name="q4" value="font-style"> font-style</label>
+        </div>
+
+        <br>
+
+        <!-- Question 5 -->
+        <div class="card">
+            <p>5. Which JavaScript keyword is used to declare a constant?</p>
+            <label><input type="radio" name="q5" value="var"> var</label><br>
+            <label><input type="radio" name="q5" value="let"> let</label><br>
+            <label><input type="radio" name="q5" value="const"> const</label>
+        </div>
+
+        <br>
+
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+    <h2 id="result"></h2>
+</div>
+
+<script>
+    // Correct answers
+    const correctAnswers = {
+        q1: "Delhi",
+        q2: "JavaScript",
+        q3: "a",
+        q4: "color",
+        q5: "const"
+    };
+
+    const quizform = document.getElementById("quizform");
+    const result = document.getElementById("result");
+
+    quizform.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let score = 0;
+        let total = Object.keys(correctAnswers).length;
+
+        for (let key in correctAnswers) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+
+            if (selected && selected.value === correctAnswers[key]) {
+                score++;
+            }
+        }
+
+        result.textContent = `Your score is ${score} out of ${total}`;
+        result.style.color = "green";
+    });
+</script>
+
+</body>
+</html>

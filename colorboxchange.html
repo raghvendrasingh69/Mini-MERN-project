@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div >
+        <h1>Multiple Div</h1>
+        <div style="border: 2px solid black; margin-bottom: 10px; background-color: blue; height: 120px; width: 20%; " id="div1"  ">
+            <p>This is the first div.</p>
+        </div>
+
+        <div style="border: 2px solid black; margin-bottom: 10px; background-color: wheat; height: 120px; width: 20%; " id="div2" ">
+            <p>This is the second div.</p>
+        </div>
+
+        <div style="border: 2px solid black; margin-bottom: 10px; background-color: pink; height: 120px; width: 20%;">
+            <p>This is the third div.</p>
+        </div>
+
+        <div style="border: 2px solid black; margin-bottom: 10px; background-color: lightgreen; height: 120px; width: 20%;">
+            <p>This is the fourth div.</p>
+        </div>
+        
+    </div>
+</body>
+<script>
+    const div1 = document.getElementById("div1");
+
+div1.addEventListener("click", () => {
+    if (div1.style.backgroundColor === "blue") {
+        div1.style.backgroundColor = "red";
+    } else {
+        div1.style.backgroundColor = "blue";
+    }
+
+    div1.style.transform = "translateX(200px)";
+});
+
+const div2 = document.getElementById("div2");
+div2.addEventListener("click", () => {
+    if (div2.style.backgroundColor === "wheat") {
+        div2.style.backgroundColor = "black";
+    } else {
+        div2.style.backgroundColor = "wheat";
+    }
+
+    div2.style.transform = "translateX(200px) rotate(45deg) scale(0.5)";
+});
+
+</script>
+</html>
